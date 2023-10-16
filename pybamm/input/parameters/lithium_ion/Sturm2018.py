@@ -1,4 +1,28 @@
 
+def graphite_ocp_sturm2018(sto):
+    raise NotImplementedError
+
+
+def nmc_ocp_sturm2018(sto):
+    raise NotImplementedError
+
+
+def graphite_electrolyte_exchange_current_density_sturm2018(c_e, c_s_surf, c_s_max, temp):
+    raise NotImplementedError
+
+
+def nmc_electrolyte_exchange_current_density_sturm2018(c_e, c_s_surf, c_s_max, temp):
+    raise NotImplementedError
+
+
+def electrolyte_diffusivity_sturm2018(c_e, temp):
+    raise NotImplementedError
+
+
+def electrolyte_conductivity_sturm2018(c_e, temp):
+    raise NotImplementedError
+
+
 # Call dict via a function to avoid errors when editing in place
 def get_parameter_values():
     """
@@ -62,7 +86,7 @@ def get_parameter_values():
         "Negative electrode conductivity [S.m-1]": 215.0,
         "Maximum concentration in negative electrode [mol.m-3]": 33133.0,
         "Negative electrode diffusivity [m2.s-1]": 3.3e-14,
-        "Negative electrode OCP [V]": graphite_LGM50_ocp_Chen2020,
+        "Negative electrode OCP [V]": graphite_ocp_sturm2018,
         "Negative electrode porosity": 0.25,
         "Negative electrode active material volume fraction": 0.75,
         "Negative particle radius [m]": 5.86e-06,
@@ -71,7 +95,7 @@ def get_parameter_values():
         "Negative electrode charge transfer coefficient": 0.5,
         "Negative electrode double-layer capacity [F.m-2]": 0.2,
         "Negative electrode exchange-current density [A.m-2]"
-        "": graphite_LGM50_electrolyte_exchange_current_density_Chen2020,
+        "": graphite_electrolyte_exchange_current_density_sturm2018,
         "Negative electrode density [kg.m-3]": 1657.0,
         "Negative electrode specific heat capacity [J.kg-1.K-1]": 700.0,
         "Negative electrode thermal conductivity [W.m-1.K-1]": 1.7,
@@ -80,7 +104,7 @@ def get_parameter_values():
         "Positive electrode conductivity [S.m-1]": 0.18,
         "Maximum concentration in positive electrode [mol.m-3]": 63104.0,
         "Positive electrode diffusivity [m2.s-1]": 4e-15,
-        "Positive electrode OCP [V]": nmc_LGM50_ocp_Chen2020,
+        "Positive electrode OCP [V]": nmc_ocp_sturm2018,
         "Positive electrode porosity": 0.335,
         "Positive electrode active material volume fraction": 0.665,
         "Positive particle radius [m]": 5.22e-06,
@@ -89,7 +113,7 @@ def get_parameter_values():
         "Positive electrode charge transfer coefficient": 0.5,
         "Positive electrode double-layer capacity [F.m-2]": 0.2,
         "Positive electrode exchange-current density [A.m-2]"
-        "": nmc_LGM50_electrolyte_exchange_current_density_Chen2020,
+        "": nmc_electrolyte_exchange_current_density_sturm2018,
         "Positive electrode density [kg.m-3]": 3262.0,
         "Positive electrode specific heat capacity [J.kg-1.K-1]": 700.0,
         "Positive electrode thermal conductivity [W.m-1.K-1]": 2.1,
@@ -104,8 +128,8 @@ def get_parameter_values():
         "Initial concentration in electrolyte [mol.m-3]": 1000.0,
         "Cation transference number": 0.2594,
         "Thermodynamic factor": 1.0,
-        "Electrolyte diffusivity [m2.s-1]": electrolyte_diffusivity_Nyman2008,
-        "Electrolyte conductivity [S.m-1]": electrolyte_conductivity_Nyman2008,
+        "Electrolyte diffusivity [m2.s-1]": electrolyte_diffusivity_sturm2018,
+        "Electrolyte conductivity [S.m-1]": electrolyte_conductivity_sturm2018,
         # experiment
         "Reference temperature [K]": 298.15,
         "Total heat transfer coefficient [W.m-2.K-1]": 10.0,
@@ -120,5 +144,5 @@ def get_parameter_values():
         "Initial concentration in positive electrode [mol.m-3]": 17038.0,
         "Initial temperature [K]": 298.15,
         # citations
-        "citations": ["Chen2020"],
+        "citations": ["Sturm2018"],
     }
