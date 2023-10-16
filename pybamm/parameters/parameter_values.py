@@ -378,7 +378,7 @@ class ParameterValues:
 
     def process_model(self, unprocessed_model, inplace=True):
         """Assign parameter values to a model.
-        Currently inplace, could be changed to return a new model.
+        Currently, inplace, could be changed to return a new model.
 
         Parameters
         ----------
