@@ -66,19 +66,19 @@ def get_parameter_values():
         "Separator thickness [m]": 1.2e-06,
         "Positive electrode thickness [m]": 6.62e-05,
         "Positive current collector thickness [m]": 1.6e-05,  # x
-        "Electrode height [m]": 0.065,  # x
-        "Electrode width [m]": 1.58,  # x
+        "Electrode height [m]": 0.058,
+        "Electrode width [m]": 0.615,
         "Cell cooling surface area [m2]": 0.00531,  # x
         "Cell volume [m3]": 2.42e-05,  # x
         "Cell thermal expansion coefficient [m.K-1]": 1.1e-06,  # x
-        "Negative current collector conductivity [S.m-1]": 58411000.0,  # x
-        "Positive current collector conductivity [S.m-1]": 36914000.0,  # x
-        "Negative current collector density [kg.m-3]": 8960.0,  # x
-        "Positive current collector density [kg.m-3]": 2700.0,  # x
-        "Negative current collector specific heat capacity [J.kg-1.K-1]": 385.0,  # x
-        "Positive current collector specific heat capacity [J.kg-1.K-1]": 897.0,  # x
-        "Negative current collector thermal conductivity [W.m-1.K-1]": 401.0,  # x
-        "Positive current collector thermal conductivity [W.m-1.K-1]": 237.0,  # x
+        "Negative current collector conductivity [S.m-1]": 5.96e7,  # Switch to function?
+        "Positive current collector conductivity [S.m-1]": 3.78e7,  # Switch to function?
+        "Negative current collector density [kg.m-3]": 8950.0,
+        "Positive current collector density [kg.m-3]": 4870.0,
+        "Negative current collector specific heat capacity [J.kg-1.K-1]": 385.0,
+        "Positive current collector specific heat capacity [J.kg-1.K-1]": 903.0,
+        "Negative current collector thermal conductivity [W.m-1.K-1]": 398.0,
+        "Positive current collector thermal conductivity [W.m-1.K-1]": 238.0,
         "Nominal cell capacity [A.h]": 3.35,
         "Current function [A]": 5.0,  # x
         "Contact resistance [Ohm]": 0,  # x
@@ -97,8 +97,8 @@ def get_parameter_values():
         "Negative electrode exchange-current density [A.m-2]"
         "": graphite_electrolyte_exchange_current_density_sturm2018,
         "Negative electrode density [kg.m-3]": 2240.0,
-        "Negative electrode specific heat capacity [J.kg-1.K-1]": 700.0,  # x
-        "Negative electrode thermal conductivity [W.m-1.K-1]": 1.7,  # x
+        "Negative electrode specific heat capacity [J.kg-1.K-1]": 867.0,
+        "Negative electrode thermal conductivity [W.m-1.K-1]": 1.04,
         "Negative electrode OCP entropic change [V.K-1]": 0.0,  # x
         # positive electrode
         "Positive electrode conductivity [S.m-1]": 0.17,
@@ -115,15 +115,15 @@ def get_parameter_values():
         "Positive electrode exchange-current density [A.m-2]"
         "": nmc_electrolyte_exchange_current_density_sturm2018,
         "Positive electrode density [kg.m-3]": 4870.0,
-        "Positive electrode specific heat capacity [J.kg-1.K-1]": 700.0,  # x
-        "Positive electrode thermal conductivity [W.m-1.K-1]": 2.1,  # x
+        "Positive electrode specific heat capacity [J.kg-1.K-1]": 840.1,
+        "Positive electrode thermal conductivity [W.m-1.K-1]": 1.58,
         "Positive electrode OCP entropic change [V.K-1]": 0.0,  # x
         # separator
         "Separator porosity": 0.45,
         "Separator Bruggeman coefficient (electrolyte)": 1.5,
-        "Separator density [kg.m-3]": 397.0,  # x
-        "Separator specific heat capacity [J.kg-1.K-1]": 700.0,  # x
-        "Separator thermal conductivity [W.m-1.K-1]": 0.16,  # x
+        "Separator density [kg.m-3]": 1009.0,
+        "Separator specific heat capacity [J.kg-1.K-1]": 1978.2,
+        "Separator thermal conductivity [W.m-1.K-1]": 0.33,
         # electrolyte
         "Initial concentration in electrolyte [mol.m-3]": 1000.0,
         "Cation transference number": 0.38,
