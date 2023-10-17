@@ -1,5 +1,5 @@
 
-def graphite_ocp_sturm2018(sto):
+def silicon_graphite_ocp_sturm2018(sto):
     raise NotImplementedError
 
 
@@ -71,8 +71,8 @@ def get_parameter_values():
         "Cell cooling surface area [m2]": 0.00531,  # x
         "Cell volume [m3]": 2.42e-05,  # x
         "Cell thermal expansion coefficient [m.K-1]": 1.1e-06,  # x
-        "Negative current collector conductivity [S.m-1]": 5.96e7,  # Switch to function?
-        "Positive current collector conductivity [S.m-1]": 3.78e7,  # Switch to function?
+        "Negative current collector conductivity [S.m-1]": 5.96e7,
+        "Positive current collector conductivity [S.m-1]": 3.78e7,
         "Negative current collector density [kg.m-3]": 8950.0,
         "Positive current collector density [kg.m-3]": 4870.0,
         "Negative current collector specific heat capacity [J.kg-1.K-1]": 385.0,
@@ -86,12 +86,12 @@ def get_parameter_values():
         "Negative electrode conductivity [S.m-1]": 100.0,
         "Maximum concentration in negative electrode [mol.m-3]": 34684.0,
         "Negative electrode diffusivity [m2.s-1]": 5.0e-14,
-        "Negative electrode OCP [V]": graphite_ocp_sturm2018,
+        "Negative electrode OCP [V]": silicon_graphite_ocp_sturm2018,
         "Negative electrode porosity": 0.216,
         "Negative electrode active material volume fraction": 0.694,
         "Negative particle radius [m]": 6.1e-06,
         "Negative electrode Bruggeman coefficient (electrolyte)": 1.5,
-        "Negative electrode Bruggeman coefficient (electrode)": 0,  # x
+        "Negative electrode Bruggeman coefficient (electrode)": 0,
         "Negative electrode charge transfer coefficient": 0.5,
         "Negative electrode double-layer capacity [F.m-2]": 0.2,  # x
         "Negative electrode exchange-current density [A.m-2]"
@@ -109,7 +109,7 @@ def get_parameter_values():
         "Positive electrode active material volume fraction": 0.745,
         "Positive particle radius [m]": 3.8e-06,
         "Positive electrode Bruggeman coefficient (electrolyte)": 1.85,
-        "Positive electrode Bruggeman coefficient (electrode)": 0,  # x
+        "Positive electrode Bruggeman coefficient (electrode)": 0,
         "Positive electrode charge transfer coefficient": 0.5,
         "Positive electrode double-layer capacity [F.m-2]": 0.2,  # x
         "Positive electrode exchange-current density [A.m-2]"
