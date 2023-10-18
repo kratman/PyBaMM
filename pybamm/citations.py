@@ -180,7 +180,7 @@ class Citations:
     def print(self, filename=None, output_format="text", verbose=False):
         """Print all citations that were used for running simulations. The verbose
         option is provided to print tags for citations in the output such that it can
-        can be seen where the citations were registered due to the use of PyBaMM models
+        be seen where the citations were registered due to the use of PyBaMM models
         and solvers in the code.
 
         .. note::
