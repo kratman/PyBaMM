@@ -1,26 +1,69 @@
+import numpy as np
+
 
 def silicon_graphite_ocp_sturm2018(sto):
-    raise NotImplementedError
+    a = 2.31794991e-01
+    b = 3.45600198e-01
+    c = -9.91250133e+03
+    d = 5.12883954e-01
+    e = -5.77907652e+02
+    f = 5.74540667e-01
+    g = -4.80814406e+01
+    h = -4.08098181e-01
+    i = 2.16300705e-01
+    pot = a
+    pot += b * np.exp(c * sto)
+    pot += d * np.exp(e * sto)
+    pot += f * np.exp(g * sto)
+    pot += h * sto + i * sto ** 2
+    return pot
 
 
 def nmc_ocp_sturm2018(sto):
-    raise NotImplementedError
+    a = 3.17566649
+    b = 1.35487509
+    c = 0.04694686
+    d = -1.16220412
+    e = -0.41835083
+    f = 0.53203523
+    pot = a
+    pot += b * np.exp(c * sto)
+    pot += d * sto + e * sto ** 2 + f * sto ** 3
+    return pot
 
 
 def graphite_electrolyte_exchange_current_density_sturm2018(c_e, c_s_surf, c_s_max, temp):
-    raise NotImplementedError
+    a = 3e-11  # Not correct
+    e_r = 3600.0  # In Kelvin
+    arrhenius = a * np.exp(e_r * (1 / 298.15 - 1 / temp))
+    concentrations = c_e ** 0.5 * c_s_surf ** 0.5 * (c_s_max - c_s_surf) ** 0.5
+    return arrhenius * concentrations
 
 
 def nmc_electrolyte_exchange_current_density_sturm2018(c_e, c_s_surf, c_s_max, temp):
-    raise NotImplementedError
+    a = 1e-11  # Not correct
+    e_r = 3600.0  # In Kelvin
+    arrhenius = a * np.exp(e_r * (1 / 298.15 - 1 / temp))
+    concentrations = c_e ** 0.5 * c_s_surf ** 0.5 * (c_s_max - c_s_surf) ** 0.5
+    return arrhenius * concentrations
 
 
 def electrolyte_diffusivity_sturm2018(c_e, temp):
-    raise NotImplementedError
+    exponent = -4.43 - (54.0 / (temp - 229 - 5 * c_e)) - 0.22 * c_e
+    diffusivity = 1e-3 * (10 ** exponent)
+    return diffusivity
 
 
 def electrolyte_conductivity_sturm2018(c_e, temp):
-    raise NotImplementedError
+    cond = -10.5
+    cond += 0.668 * c_e
+    cond += 0.494 * (c_e ** 2)
+    cond += 0.074 * temp
+    cond += -0.0178 * c_e * temp
+    cond += -8.86e-4 * (c_e ** 2) * temp
+    cond += -6.96e-5 * (temp ** 2)
+    cond += 2.8e-5 * c_e * (temp ** 2)
+    return 0.1 * c_e * (cond ** 2)
 
 
 # Call dict via a function to avoid errors when editing in place
@@ -37,29 +80,6 @@ def get_parameter_values():
 
     return {
         "chemistry": "lithium_ion",
-        # sei
-        "Ratio of lithium moles to SEI moles": 2.0,  # x
-        "Inner SEI reaction proportion": 0.5,  # x
-        "Inner SEI partial molar volume [m3.mol-1]": 9.585e-05,  # x
-        "Outer SEI partial molar volume [m3.mol-1]": 9.585e-05,  # x
-        "SEI reaction exchange current density [A.m-2]": 1.5e-07,  # x
-        "SEI resistivity [Ohm.m]": 200000.0,  # x
-        "Outer SEI solvent diffusivity [m2.s-1]": 2.5000000000000002e-22,  # x
-        "Bulk solvent concentration [mol.m-3]": 2636.0,  # x
-        "Inner SEI open-circuit potential [V]": 0.1,  # x
-        "Outer SEI open-circuit potential [V]": 0.8,  # x
-        "Inner SEI electron conductivity [S.m-1]": 8.95e-14,  # x
-        "Inner SEI lithium interstitial diffusivity [m2.s-1]": 1e-20,  # x
-        "Lithium interstitial reference concentration [mol.m-3]": 15.0,  # x
-        "Initial inner SEI thickness [m]": 2.5e-09,  # x
-        "Initial outer SEI thickness [m]": 2.5e-09,  # x
-        "EC initial concentration in electrolyte [mol.m-3]": 4541.0,  # x
-        "EC diffusivity [m2.s-1]": 2e-18,  # x
-        "SEI kinetic rate constant [m.s-1]": 1e-12,  # x
-        "SEI open-circuit potential [V]": 0.4,  # x
-        "SEI growth activation energy [J.mol-1]": 0.0,  # x
-        "Negative electrode reaction-driven LAM factor [m3.mol-1]": 0.0,  # x
-        "Positive electrode reaction-driven LAM factor [m3.mol-1]": 0.0,  # x
         # cell
         "Negative current collector thickness [m]": 1.2e-05,  # x
         "Negative electrode thickness [m]": 8.67e-05,
