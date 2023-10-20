@@ -33,6 +33,14 @@ def nmc_ocp_sturm2019(sto):
     return pot
 
 
+def sic_entropic_sturm2019(sto, c_s_max):
+    return 0
+
+
+def nmc_entropic_sturm2019(sto, c_s_max):
+    return 0
+
+
 def sic_electrolyte_exchange_current_density_sturm2019(c_e, c_s_surf, c_s_max, temp):
     a = 3e-11 * pybamm.constants.F
     e_r = 3600.0  # In Kelvin
@@ -117,7 +125,7 @@ def get_parameter_values():
         "Negative electrode density [kg.m-3]": 2240.0,
         "Negative electrode specific heat capacity [J.kg-1.K-1]": 867.0,
         "Negative electrode thermal conductivity [W.m-1.K-1]": 1.04,
-        "Negative electrode OCP entropic change [V.K-1]": 0.0,  # Function
+        "Negative electrode OCP entropic change [V.K-1]": sic_entropic_sturm2019,
         # Positive electrode
         "Positive electrode conductivity [S.m-1]": 0.17,
         "Maximum concentration in positive electrode [mol.m-3]": 50060.0,
@@ -134,7 +142,7 @@ def get_parameter_values():
         "Positive electrode density [kg.m-3]": 4870.0,
         "Positive electrode specific heat capacity [J.kg-1.K-1]": 840.1,
         "Positive electrode thermal conductivity [W.m-1.K-1]": 1.58,
-        "Positive electrode OCP entropic change [V.K-1]": 0.0,  # Function
+        "Positive electrode OCP entropic change [V.K-1]": nmc_entropic_sturm2019,
         # Separator
         "Separator porosity": 0.45,
         "Separator Bruggeman coefficient (electrolyte)": 1.5,
