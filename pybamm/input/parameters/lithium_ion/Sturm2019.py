@@ -3,33 +3,31 @@ import numpy as np
 
 
 def sic_ocp_sturm2019(sto):
-    a = 2.31794991e-01
-    b = 3.45600198e-01
-    c = -9.91250133e+03
-    d = 5.12883954e-01
-    e = -5.77907652e+02
-    f = 5.74540667e-01
-    g = -4.80814406e+01
-    h = -4.08098181e-01
-    i = 2.16300705e-01
-    pot = a
-    pot += b * np.exp(c * sto)
-    pot += d * np.exp(e * sto)
-    pot += f * np.exp(g * sto)
-    pot += h * sto + i * sto ** 2
+    params = [2.78822910e-01, 9.55053661e-01, -1.82565434e+02,
+              -4.70074568e-02, 2.89538197e+04,  1.64723478e-04,
+              -1.06353035e+00,  2.43996536e+00, 3.22405988e-02,
+              -5.37849275e-02,  1.34031755e+02,  4.03670553e-02,
+              2.26933218e+00, -1.44503235e+00]
+    pot = params[0]
+    pot += params[1] * np.exp(params[2] * sto)
+    pot += params[3] * np.tanh(params[4] * (sto - params[5]))
+    pot += params[6] * np.tanh(params[7] * (sto - params[8]))
+    pot += params[9] * np.tanh(params[10] * (sto - params[11]))
+    pot += params[12] * sto + params[13] * sto**2
     return pot
 
 
 def nmc_ocp_sturm2019(sto):
-    a = 3.17566649
-    b = 1.35487509
-    c = 0.04694686
-    d = -1.16220412
-    e = -0.41835083
-    f = 0.53203523
-    pot = a
-    pot += b * np.exp(c * sto)
-    pot += d * sto + e * sto ** 2 + f * sto ** 3
+    params = [4.22843764e+00, -1.75032830e+00, -4.23924601e-01,
+              2.13924294e+03, 9.99973289e-01, -1.75710279e+01,
+              1.57608700e+01,  3.11479561e-01, 1.75819760e+01,
+              1.57942423e+01, 3.11484291e-01, 6.08682148e-01]
+    pot = params[0]
+    pot += params[1] * sto
+    pot += params[2] * np.tanh(params[3] * (sto - params[4]))
+    pot += params[5] * np.tanh(params[6] * (sto - params[7]))
+    pot += params[8] * np.tanh(params[9] * (sto - params[10]))
+    pot += params[11] * sto ** 2
     return pot
 
 
