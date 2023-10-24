@@ -45,7 +45,7 @@ def lookup_from(sto, table):
     return low[1] + (delta_e * frac)
 
 
-def sic_entropic_sturm2019(sto, c_s_max):
+def sic_entropic_sturm2019(sto, _c_s_max):
     table = [
         [-2.00000, 0.325000], [0.000000, 0.325000], [0.053815, 0.299062],
         [0.107973, 0.272208], [0.162047, 0.231030], [0.216205, 0.005931],
@@ -58,7 +58,7 @@ def sic_entropic_sturm2019(sto, c_s_max):
     return lookup_from(sto, table)
 
 
-def nmc_entropic_sturm2019(sto, c_s_max):
+def nmc_entropic_sturm2019(sto, _c_s_max):
     table = [
         [-2.00000, 0.010643], [0.215700, 0.010643], [0.279814, 0.038326],
         [0.333355, 0.009944], [0.386678, 0.022329], [0.439855, 0.013543],
