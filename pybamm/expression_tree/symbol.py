@@ -215,7 +215,7 @@ class Symbol:
             children = []
 
         self._children = children
-        # Keep a separate "oprhans" attribute for backwards compatibility
+        # Keep a separate "orphans" attribute for backwards compatibility
         self._orphans = children
 
         # Set domains (and hence id)

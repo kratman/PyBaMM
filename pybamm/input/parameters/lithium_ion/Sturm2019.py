@@ -1,3 +1,4 @@
+import os
 import pybamm
 import numpy as np
 
@@ -35,7 +36,7 @@ def lookup_from(sto, table):
     low = table[0]
     high = table[-1]
     for point in table:
-        if sto > point[0]:
+        if point[0] < sto:
             low = point
         else:
             high = point
@@ -45,29 +46,27 @@ def lookup_from(sto, table):
     return low[1] + (delta_e * frac)
 
 
+path, _ = os.path.split(os.path.abspath(__file__))
+sic_entropic_sturm2019_data = pybamm.parameters.process_1D_data(
+    "sic_entropic_sturm2019.csv", path=path
+)
+
+
 def sic_entropic_sturm2019(sto, _c_s_max):
-    table = [
-        [-2.00000, 0.325000], [0.000000, 0.325000], [0.053815, 0.299062],
-        [0.107973, 0.272208], [0.162047, 0.231030], [0.216205, 0.005931],
-        [0.270446, -0.014330], [0.323933, -0.026410], [0.379433, -0.197788],
-        [0.433171, -0.216313], [0.487916, -0.194033], [0.542074, -0.028684],
-        [0.594135, -0.048707], [0.650389, -0.058157], [0.703960, -0.065898],
-        [0.758034, -0.075559], [0.811437, -0.093320], [0.865700, -0.110000],
-        [2.000000, -0.110000],
-    ]
-    return lookup_from(sto, table)
+    name, (x, y) = sic_entropic_sturm2019_data
+    return pybamm.Interpolant(x, y, sto, name=name,
+                              interpolator="cubic", extrapolate=True)
+
+
+nmc_entropic_sturm2019_data = pybamm.parameters.process_1D_data(
+    "nmc_entropic_sturm2019.csv", path=path
+)
 
 
 def nmc_entropic_sturm2019(sto, _c_s_max):
-    table = [
-        [-2.00000, 0.010643], [0.215700, 0.010643], [0.279814, 0.038326],
-        [0.333355, 0.009944], [0.386678, 0.022329], [0.439855, 0.013543],
-        [0.494051, -0.008924], [0.547519, 0.003457], [0.601133, 0.006164],
-        [0.654602, -0.025687], [0.708143, -0.034052], [0.761684, -0.031068],
-        [0.815298, -0.028516], [0.868839, -0.016959], [0.922380, -0.038348],
-        [0.982700, -0.071387], [2.000000, -0.071387]
-    ]
-    return lookup_from(sto, table)
+    name, (x, y) = nmc_entropic_sturm2019_data
+    return pybamm.Interpolant(x, y, sto, name=name,
+                              interpolator="cubic", extrapolate=True)
 
 
 def sic_electrolyte_exchange_current_density_sturm2019(c_e, c_s_surf, c_s_max, temp):
