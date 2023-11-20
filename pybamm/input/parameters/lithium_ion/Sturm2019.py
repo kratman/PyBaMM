@@ -4,6 +4,24 @@ import numpy as np
 
 
 def sic_ocp_sturm2019(sto):
+    params = [
+        0.6375859393941083, 1.8087057997259222, -1.352047106476269,
+        0.47307801250300757, -898.9568519344261, -0.0001690197655519556,
+        1465278.9760700746, -176.8624584921489, -0.08640614865617219,
+        -0.2526428245627224, 9216.633179702003, 1.3804162500597773e-05,
+        -0.5813759415035976, 3.5278754099981997, 0.0929571624120042,
+        -0.33555623504577264, 29.837276293981226, 0.005511830620019072
+    ]
+    pot = params[0] + params[1] * sto + params[2] * sto**2
+    pot += params[3] * np.exp(params[4] * (sto - params[5]))
+    pot += params[6] * np.exp(params[7] * (sto - params[8]))
+    pot += params[9] * np.tanh(params[10] * (sto - params[11]))
+    pot += params[12] * np.tanh(params[13] * (sto - params[14]))
+    pot += params[15] * np.tanh(params[16] * (sto - params[17]))
+    return pot
+
+
+def old_sic_ocp_sturm2019(sto):
     params = [2.78822910e-01, 9.55053661e-01, -1.82565434e+02,
               -4.70074568e-02, 2.89538197e+04,  1.64723478e-04,
               -1.06353035e+00,  2.43996536e+00, 3.22405988e-02,
@@ -192,8 +210,8 @@ def get_parameter_values():
         "Upper voltage cut-off [V]": 4.2,
         "Open-circuit voltage at 0% SOC [V]": 2.5,
         "Open-circuit voltage at 100% SOC [V]": 4.2,
-        "Initial concentration in negative electrode [mol.m-3]": 31826.0,
-        "Initial concentration in positive electrode [mol.m-3]": 13228.0,
+        "Initial concentration in negative electrode [mol.m-3]": 31486.0,
+        "Initial concentration in positive electrode [mol.m-3]": 13568.0,
         "Initial temperature [K]": 298.15,
         # citations
         "citations": ["Sturm2019"],
