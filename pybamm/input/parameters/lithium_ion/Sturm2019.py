@@ -21,21 +21,6 @@ def sic_ocp_sturm2019(sto):
     return pot
 
 
-def old_sic_ocp_sturm2019(sto):
-    params = [2.78822910e-01, 9.55053661e-01, -1.82565434e+02,
-              -4.70074568e-02, 2.89538197e+04,  1.64723478e-04,
-              -1.06353035e+00,  2.43996536e+00, 3.22405988e-02,
-              -5.37849275e-02,  1.34031755e+02,  4.03670553e-02,
-              2.26933218e+00, -1.44503235e+00]
-    pot = params[0]
-    pot += params[1] * np.exp(params[2] * sto)
-    pot += params[3] * np.tanh(params[4] * (sto - params[5]))
-    pot += params[6] * np.tanh(params[7] * (sto - params[8]))
-    pot += params[9] * np.tanh(params[10] * (sto - params[11]))
-    pot += params[12] * sto + params[13] * sto**2
-    return pot
-
-
 def nmc_ocp_sturm2019(sto):
     params = [4.22843764e+00, -1.75032830e+00, -4.23924601e-01,
               2.13924294e+03, 9.99973289e-01, -1.75710279e+01,
