@@ -192,8 +192,8 @@ def get_parameter_values():
         "Upper voltage cut-off [V]": 4.2,
         "Open-circuit voltage at 0% SOC [V]": 2.5,
         "Open-circuit voltage at 100% SOC [V]": 4.2,
-        "Initial concentration in negative electrode [mol.m-3]": 30163.0,
-        "Initial concentration in positive electrode [mol.m-3]": 13208.0,
+        "Initial concentration in negative electrode [mol.m-3]": 31826.0,
+        "Initial concentration in positive electrode [mol.m-3]": 13228.0,
         "Initial temperature [K]": 298.15,
         # citations
         "citations": ["Sturm2019"],
